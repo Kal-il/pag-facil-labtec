@@ -1,5 +1,5 @@
 """
-WSGI config for system project.
+WSGI config for pagfacil_lab project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'system.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pagfacil_lab.settings')
 
 application = get_wsgi_application()
