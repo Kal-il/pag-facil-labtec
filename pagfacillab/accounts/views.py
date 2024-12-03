@@ -26,8 +26,9 @@ def register(request):
 
 def login_view(request):
     if request.method == 'POST':
+        username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, 'Bem Vindo (a) '+ user.first_name)
@@ -40,8 +41,11 @@ def login_view(request):
 
 
 def logout_view(request):
-    # Add your logout logic here
-    pass
+    from django.contrib.auth import logout
+    logout(request)
+    messages.success(request, 'Você saiu com sucesso.')
+    return redirect('login')
+
 def password_reset(request):
     # Add your logout logic here
     pass
