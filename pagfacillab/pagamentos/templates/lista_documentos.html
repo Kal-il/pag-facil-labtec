@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Documentos Gerados</h1>
+<ul>
+    {% for doc in documentos %}
+        <li>
+            {{ doc.nome_cliente }} - {{ doc.data_criacao }}
+            <a href="{{ doc.arquivo.url }}" class="btn btn-primary" download>Baixar</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
