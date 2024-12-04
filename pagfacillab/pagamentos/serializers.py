@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from models import Pagamento
+from .models import DocumentoBoleto
 
-class PagamentoSerializer(serializers.ModelSerializer):
+class DocumentoBoletoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Pagamento
+        model = DocumentoBoleto
         fields = '__all__'

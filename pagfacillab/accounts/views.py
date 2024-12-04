@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 
 
-# Create your views here.
+# Create your views_dir here.
 def register(request):
     form = CustomUserCreationForm()
     if request.method == "POST":

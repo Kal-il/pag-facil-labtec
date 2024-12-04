@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação de Dados</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Confirme os Dados Antes de Gerar o Boleto</h2>
+    <ul>
+        {% for key, value in dados.items %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post" action="{% url 'confirmar_boleto' %}">
+        {% csrf_token %}
+        <button type="submit">Confirmar e Gerar Boleto</button>
+    </form>
+</body>
+</html>
