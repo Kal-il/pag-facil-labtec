@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pagamentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="submitForm()" #form="ngForm">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Gerar Solicitação de Boleto</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input [(ngModel)]="nome_cliente" name="nome_cliente" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">CNPJ/CPF</ion-label>
+          <ion-input [(ngModel)]="cpf_cnpj" name="cpf_cnpj" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Endereço</ion-label>
+          <ion-input [(ngModel)]="endereco" name="endereco" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Cidade</ion-label>
+          <ion-input [(ngModel)]="cidade" name="cidade" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Estado</ion-label>
+          <ion-input [(ngModel)]="estado" name="estado" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">CEP</ion-label>
+          <ion-input [(ngModel)]="cep" name="cep" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Telefone</ion-label>
+          <ion-input [(ngModel)]="telefone" name="telefone" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input [(ngModel)]="email" name="email" required type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Serviço</ion-label>
+          <ion-textarea [(ngModel)]="servico" name="servico" required></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <!-- Botão desabilitado até o formulário ser válido -->
+          <ion-button expand="full" type="submit" [disabled]="!form.valid">Solicitar Boleto</ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>
+

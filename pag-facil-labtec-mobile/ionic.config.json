@@ -1,0 +1,7 @@
+{
+  "name": "PagFacil LABTEC mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

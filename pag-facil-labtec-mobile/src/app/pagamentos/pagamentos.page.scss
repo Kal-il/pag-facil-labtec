@@ -1,0 +1,15 @@
+/* pagamentos.page.scss */
+
+ion-header, ion-content {
+    color: white;  // Define a cor do texto para branco
+  }
+  
+  ion-toolbar {
+    --background: var(--ion-color-primary);  // Ajuste conforme a cor do seu tema
+    color: white;  // Cor do texto no toolbar
+  }
+  
+  h1, p {
+    color: white;  // Torna os textos <h1> e <p> brancos
+  }
+  
