@@ -7,22 +7,48 @@
 
 * [Descrição do projeto](#descrição)
 * [Funcionalidades](#hammer-requisitos-funcionais)
+# **PagFacil LABTEC-UFT**
 
-## Descrição 
- O projeto visa criar uma plataforma web e móvel para facilitar o processo de contratação de serviços do LABTEC-UFT, esta plataforma possibilitará que clientes realizem o processo de orçamento e pagamento dos projetos de forma simplificada e rápida. Alem disso, permitirá o acompanhamento das encomendas."
-# :hammer: Requisitos funcionais
+## :clipboard: **Descrição**
+O **PagFacil LABTEC-UFT** é uma plataforma web desenvolvida para simplificar o processo de pagamento de encomendas realizadas no Laboratório de Tecnologias 3D da Universidade Federal do Tocantins (**LABTEC-UFT**).  
+Através da plataforma, clientes podem preencher formulários com as informações necessárias, permitindo que o laboratório envie os dados ao órgão responsável pela emissão de boletos.
 
-- `RF01: Tela Home (usuário)`: Esta funcionalidade consiste em uma página inicial acessível aos usuários, onde eles podem encontrar informações sobre os serviços oferecidos pelo LABTEC-UFT e encontrar acessos faceis para orçamentar, pagar e acompanhar um ṕrojeto.
-- `RF02: Formulário para orçamento de projeto (usuário)`: Os usuários podem preencher um formulário com detalhes sobre o projeto que desejam contratar. Isso inclui informações como tipo de serviço, prazos, requisitos específicos, etc.
-- `RF03: Formulário para pagamento de projeto (usuário)`: Após receberem o orçamento para o projeto solicitado, os usuários podem acessar um formulário para efetuar o pagamento. Este formulário deve fornecer opções de pagamento e capturar os detalhes necessários para a transação.
-- `RF04: Página de acompanhamento de encomenda (usuário)`: Esta funcionalidade permite que os usuários acompanhem o status de suas encomendas. Eles podem verificar o progresso do projeto, atualizações de status e previsões de entrega.
-- `RF05: Funcionalidade de entrar em contato por redes sociais (administrador)`: Botões de link que redirecionam o usuário para as redes sociais do laboratório.
-- `RF06: Funcionalidade de encaminhar documento pdf do formulário por e-mail (administrador)`: Esta funcionalidade permite que os administradores encaminhem o formulário preenchido em formato PDF por e-mail para o orgão responsável pela emissão dos boletos ou para os usuários.
-- `RF07: Tela de gerenciamento de encomendas (administrador)`: Os administradores têm acesso a uma tela de gerenciamento onde podem visualizar todas as encomendas recebidas. Isso inclui detalhes como datas de recebimento, status atual, informações do cliente, entre outros.
-- `RF08: Funcionalidade de aprovar e negar encomenda (administrador)`: Com base nas informações fornecidas pelos usuários nos formulários de orçamento, os administradores podem aprovar ou negar as encomendas. Isso pode envolver revisão de informações, confirmação de disponibilidade de recursos, entre outros critérios.
+---
 
-- `RF09: Funcionalidade de fazer download do formulário (admnistrador)`: Os administradores podem fazer download dos formulários preenchidos em formato PDF para manter registros ou para referência futura.
+## :hammer: **Requisitos Funcionais**
 
-- `RF10: Tela de login do usuário admnistrador (admnistrador)`: Para poder gerir a plataforma, haverá um único usuário administrador pertencente ao laboratório.
+### **Usuário (Cliente):**
+- **`RF01: Tela Home`:**  
+  Página inicial com informações sobre os serviços oferecidos pelo LABTEC-UFT, além de acesso fácil ao formulário de pagamento.
 
+- **`RF02: Formulário para pagamento`:**  
+  Os usuários podem preencher um formulário com seus dados pessoais e informações relacionadas ao serviço contratado.
+
+---
+
+### **Administrador (LABTEC):**
+- **`RF03: Tela de gerenciamento`:**  
+  Permite que o administrador visualize e gerencie as solicitações recebidas, incluindo informações do cliente e status da solicitação.
+
+- **`RF04: Aprovação ou recusa de solicitações`:**  
+  Com base nas informações fornecidas pelos clientes, o administrador pode aprovar ou recusar as solicitações.
+
+- **`RF05: Download de formulários`:**  
+  O administrador pode fazer o download de formulários preenchidos em formato PDF para manter registros.
+
+- **`RF06: Envio de formulário por e-mail`:**  
+  Funcionalidade para enviar o formulário preenchido por e-mail ao órgão responsável pela emissão de boletos.
+
+- **`RF07: Tela de login`:**  
+  Um único administrador tem acesso ao sistema, sendo necessário login para gerenciar as solicitações.
+
+---
+
+## :gear: **Tecnologias Utilizadas**
+- **Backend:** Django + Django REST Framework.
+- **Frontend:** Bootstrap 5.
+- **Banco de Dados:** SQLite (ou PostgreSQL, conforme necessidade futura).
+- **Estilo Visual:** Alinhado à identidade do LABTEC-UFT.
+
+---
 
