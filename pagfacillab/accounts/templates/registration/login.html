@@ -3,26 +3,28 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card p-4" style="max-width: max-content; width: 100%; border-radius: 12px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); background-color: #fff;">
+            <h2 class="text-center mb-4" style="font-weight: 600; font-size: 28px; color: #162239;">Login</h2>
 
-<div class="col-md-4">
-    <form method="post">
-        {% csrf_token %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label" for="id_username" style="color: #162239;">Usuário:</label>
+                    <input type="text" name="username" class="form-control form-control-lg" required style="border-radius: 8px; border: 2px solid #ccc; background-color: #f8f9fa;">
+                </div>
 
-        <div class="mb-3">
-            <label class="form-label" for="id_username">Usuário:</label>
-            <input type="text" name="username" class="form-control">
+                <div class="mb-3">
+                    <label class="form-label" for="id_password" style="color: #162239;">Senha:</label>
+                    <input type="password" name="password" class="form-control form-control-lg" required style="border-radius: 8px; border: 2px solid #ccc; background-color: #f8f9fa;">
+                </div>
+
+                <button class="btn btn-dark btn-lg w-100" type="submit" style="border-radius: 8px; background-color: #162239; color: white; font-weight: 500;">Entrar</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="{% url 'register' %}" style="color: #162239; font-size: 14px;">Não tem uma conta? Cadastre-se</a>
+            </div>
         </div>
-        
-        <div class="mb-3">
-            <label class="form-label" for="id_password">Senha:</label>
-            <input type="password" name="password" class="form-control">
-        </div>
-
-        <button class="btn btn-warning" type="submit">Entrar</button>
-    </form>
-    
-<!--    <a href="{% url 'password_reset' %}">Esqueci minha senha</a>-->
-</div>
-
-
+    </div>
 {% endblock %}

@@ -13,10 +13,14 @@ def register(request):
 
         if form.is_valid():
             user = form.save(commit=False)
+            if request.user.is_authenticated and request.user.is_staff:  # Verifique se o usuário logado é admin
+                user.is_staff = True  # Torna o novo usuário admin
+            else:
+                user.is_staff = False  # Usuário normal
             user.is_valid = False
             user.save()
             messages.success(request, 'Registrado. Agora faça o login para começar!')
-            return redirect('home')
+            return redirect('login')
 
         else:
             print('invalid registration details')
@@ -32,6 +36,8 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Bem Vindo (a) '+ user.first_name)
+            if request.user.is_staff:
+                return redirect('home_admin')
             return redirect('home')
         else:
             # Autenticação falhou, lide com isso de acordo

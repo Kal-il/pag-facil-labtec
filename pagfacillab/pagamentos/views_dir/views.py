@@ -2,6 +2,23 @@ from django.shortcuts import render, redirect
 from typing import Any
 from ..models import DocumentoBoleto
 import requests
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.shortcuts import render, redirect
+
+# Verifica se o usuário é administrador
+def is_admin(user):
+    return user.is_authenticated and user.is_staff
+
+@login_required  # Garante que o usuário está logado
+@user_passes_test(is_admin)  # Verifica se o usuário é admin
+def home_admin(request):
+    return render(request, 'home_admin.html')  # Página para admin
+
+@login_required
+@user_passes_test(is_admin)
+def lista_documentos(request):
+    documentos = DocumentoBoleto.objects.all()
+    return render(request, 'lista_documentos.html', {'documentos': documentos})
 
 
 def home(request: Any) -> Any:
@@ -26,7 +43,7 @@ def gerar_boleto_view(request):
         # Armazena os dados na sessão para uso posterior
         request.session['dados_boleto'] = dados
         return render(request, 'confirmacao_boleto.html', {'dados': dados})  # Renderiza a página de confirmação
-
+        return redirect('confirmacao_boleto')
     return render(request, 'pagamentos.html')  # Página inicial do formulário
 
 
@@ -48,9 +65,4 @@ def confirmar_boleto(request):
             return redirect(file_url)  # Redireciona para download
 
     return redirect('api/gerar-boleto')
-
-
-def lista_documentos(request):
-    documentos = DocumentoBoleto.objects.all()
-    return render(request, 'lista_documentos.html', {'documentos': documentos})
 
