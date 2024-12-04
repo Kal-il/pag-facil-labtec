@@ -1,8 +1,24 @@
-{%extends "base.html"%}
+{% extends "base.html" %}
+{% load static %}
 
-{%block title%}Pagamentos{%endblock%}
-{%block content%}
-<h1>Home</h1>
-<div class="col-md-4">
-<button class="btn btn-success mt-3" onclick="window.location.href='{% url 'gerar_boleto' %}'">Gerar</button></div>
+{% block title %}Pagamentos{% endblock %}
+
+{% block content %}
+        <p class="" style="font-size: 18px; color: #555;">
+            O PagFacil é uma solução desenvolvida pelo LABTEC para facilitar o pagamento de encomendas.
+            Preencha seus dados abaixo e um boleto será gerado e enviado diretamente para o seu e-mail pelo órgão responsável.
+        </p>
+    <div class="container d-flex flex-column align-items-center">
+        <!-- Card com imagem e botão -->
+        <div class="card" style="max-width: 400px; width: 100%; border-radius: 12px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
+            <img src="{% static 'img.jpg' %}" class="card-img-top" alt="imagem ilustrativa de homen fazendo documento" style="border-top-left-radius: 12px; border-top-right-radius: 12px;">
+            <div class="card-body text-center">
+                <h5 class="card-title" style="font-weight: 600; font-size: 24px; color: #162239;">Gerar solicitação</h5>
+                <p class="card-text" style="color: #555; font-size: 16px;">
+                    Clique no botão abaixo para gerar uma solicitação de boleto. O documento para pagamento será enviado ao seu e-mail.
+                </p>
+                <button class="btn btn-success btn-lg" onclick="window.location.href='{% url 'gerar_boleto' %}'" style="border-radius: 8px; font-size: 16px; padding: 10px 20px;">Gerar Boleto</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}

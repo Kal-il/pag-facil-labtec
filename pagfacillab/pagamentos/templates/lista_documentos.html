@@ -1,11 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Documentos Gerados</h1>
-<ul>
+{% if user.is_authenticated %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            {% if user.is_staff %}
+                <!-- Exibido apenas para administradores -->
+                <button class="btn btn-warning" onclick="window.location.href='{% url 'home_admin' %}'">Voltar</button>
+            {% else %}
+                <!-- Exibido para usuários comuns -->
+                <button class="btn btn-warning" onclick="window.location.href='{% url 'home' %}'">Voltar</button>
+            {% endif %}
+        </div>
+        <div class="flex-grow-1 text-center">
+            <h1 class="mb-0">Documentos Gerados</h1>
+        </div>
+        <div></div> <!-- Empty div to balance the flex layout -->
+    </div>
+{% endif %}
+<ul class="list-group list-group-flush">
     {% for doc in documentos %}
-        <li>
-            {{ doc.nome_cliente }} - {{ doc.data_criacao }}
-            <a href="{{ doc.arquivo.url }}" class="btn btn-primary" download>Baixar</a>
+        <li class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ doc.nome_cliente }}</h5>
+                <small>{{ doc.data_criacao }}</small>
+                <a href="{{ doc.arquivo.url }}" class="btn btn-primary" download>Download</a>
+            </div>
         </li>
     {% endfor %}
 </ul>

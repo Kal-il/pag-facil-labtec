@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Bem-vindo, {{ user.username }}</h1>
+
+    <div class="container d-flex flex-row" style="justify-content: space-evenly">
+        <!-- Card 1: Gerar Solicitação -->
+        <div class="card" style="width: 30%; border-radius: 12px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+            <img src="{% static 'img.jpg' %}" class="card-img-top" alt="Imagem ilustrativa de gerar solicitação" style="border-top-left-radius: 12px; border-top-right-radius: 12px; height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+                <h5 class="card-title" style="font-weight: 600; font-size: 24px; color: #162239;">Gerar Solicitação</h5>
+                <p class="card-text" style="color: #555; font-size: 16px;">Clique no botão abaixo para gerar uma solicitação de boleto.</p>
+                <a href="{% url 'gerar_boleto' %}" class="btn btn-primary btn-lg w-100" style="border-radius: 8px; font-size: 16px;">Gerar Boleto</a>
+            </div>
+        </div>
+
+        <!-- Card 2: Visualizar Documentos -->
+        <div class="card" style="width: 30%; border-radius: 12px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);">
+            <img src="{% static 'img2.jpg' %}" class="card-img-top" alt="Imagem ilustrativa de visualizar documentos" style="border-top-left-radius: 12px; border-top-right-radius: 12px; height: 200px; object-fit: cover;">
+            <div class="card-body text-center">
+                <h5 class="card-title" style="font-weight: 600; font-size: 24px; color: #162239;">Visualizar Documentos</h5>
+                <p class="card-text" style="color: #555; font-size: 16px;">Clique no botão abaixo para visualizar todos os documentos gerados.</p>
+                <a href="{% url 'lista_documentos' %}" class="btn btn-secondary btn-lg w-100" style="border-radius: 8px; font-size: 16px;">Ver Documentos</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
