@@ -8,10 +8,6 @@ from datetime import datetime, timedelta
 from rest_framework import viewsets
 from ..serializers import DocumentoBoletoSerializer
 
-class DocumentoBoletoViewSet(viewsets.ModelViewSet):
-    queryset = DocumentoBoleto.objects.all()
-    serializer_class = DocumentoBoletoSerializer
-
 
 # Função para calcular a data de vencimento dos boletos
 def calcular_data_vencimento(dias_uteis: int):
@@ -21,6 +17,12 @@ def calcular_data_vencimento(dias_uteis: int):
         if data.weekday() < 5:
             dias_uteis -= 1
     return data.strftime('%d/%m/%Y')
+
+
+class DocumentoBoletoViewSet(viewsets.ModelViewSet):
+    queryset = DocumentoBoleto.objects.all().order_by('-data_criacao')  # Ordena por data de criação (opcional)
+    serializer_class = DocumentoBoletoSerializer
+
 
 
 @api_view(['POST'])

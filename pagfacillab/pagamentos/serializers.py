@@ -4,4 +4,4 @@ from .models import DocumentoBoleto
 class DocumentoBoletoSerializer(serializers.ModelSerializer):
     class Meta:
         model = DocumentoBoleto
-        fields = '__all__'
+        fields = ['id', 'nome_cliente', 'arquivo', 'data_criacao']
