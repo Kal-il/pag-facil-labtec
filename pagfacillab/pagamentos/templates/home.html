@@ -1,0 +1,8 @@
+{%extends "base.html"%}
+
+{%block title%}Pagamentos{%endblock%}
+{%block content%}
+<h1>Home</h1>
+<div class="col-md-4">
+<button class="btn btn-success mt-3" onclick="window.location.href='{% url 'gerar_boleto' %}'">Gerar</button></div>
+{% endblock %}
