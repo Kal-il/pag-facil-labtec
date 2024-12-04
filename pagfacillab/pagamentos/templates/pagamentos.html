@@ -6,10 +6,8 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
 {% if user.is_authenticated %}
     {% if user.is_staff %}
-        <!-- Exibido apenas para administradores -->
         <button class="btn btn-success" onclick="window.location.href='{% url 'home_admin' %}'">Voltar</button>
     {% else %}
-        <!-- Exibido para usuários comuns -->
         <button class="btn btn-success" onclick="window.location.href='{% url 'home' %}'">Voltar</button>
     {% endif %}
 {% endif %}
@@ -17,64 +15,62 @@
 </div>
 <div class="d-flex justify-content-center">
     <div class="col-md-6">
-
-
         <h4 class="text-center mb-3">Preencha os dados para gerar o boleto</h4>
-        <form method="post">
+        <form method="post" onsubmit="return validarFormulario()">
             {% csrf_token %}
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon1">Nome:</span>
+                <span class="input-group-text">Nome:</span>
                 <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" required>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon2">CNPJ:</span>
+                <span class="input-group-text">CPF/CNPJ:</span>
                 <input type="text" class="form-control" id="cpf_cnpj" name="cpf_cnpj" required>
             </div>
 
             <div class="mb-3 input-group">
                 <input type="text" class="form-control" id="inscricao_estadual" name="inscricao_estadual" placeholder="Inscrição Estadual">
-                <span class="input-group-text" id="basic-addon3">IE</span>
+                <span class="input-group-text">IE</span>
             </div>
 
             <div class="mb-3 input-group">
                 <input type="text" class="form-control" id="inscricao_municipal" name="inscricao_municipal" placeholder="Inscrição Municipal">
-                <span class="input-group-text" id="basic-addon4">IM</span>
+                <span class="input-group-text">IM</span>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon5">Endereço:</span>
+                <span class="input-group-text">Endereço:</span>
                 <input type="text" class="form-control" id="endereco" name="endereco" required>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon6">Cidade:</span>
+                <span class="input-group-text">Cidade:</span>
                 <input type="text" class="form-control" id="cidade" name="cidade" required>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon7">Estado:</span>
+                <span class="input-group-text">Estado:</span>
                 <input type="text" class="form-control" id="estado" name="estado" required>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon8">CEP:</span>
+                <span class="input-group-text">CEP:</span>
                 <input type="text" class="form-control" id="cep" name="cep" required>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon9">@</span>
+                <span class="input-group-text">@</span>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon10">📞</span>
+                <span class="input-group-text">📞</span>
                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
             </div>
 
             <div class="mb-3 input-group">
-                <span class="input-group-text" id="basic-addon11">💼</span>
+                <span class="input-group-text">💼</span>
                 <textarea class="form-control" id="servico" name="servico" placeholder="Descrição do Serviço" required></textarea>
             </div>
 
@@ -83,3 +79,32 @@
     </div>
 </div>
 {% endblock %}
+
+<script>
+function validarFormulario() {
+    const cpfCnpj = document.getElementById('cpf_cnpj').value;
+    const cep = document.getElementById('cep').value;
+    const telefone = document.getElementById('telefone').value;
+
+    // Validação de CPF/CNPJ
+    const regexCpfCnpj = /^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}|\d{14})$/;
+    if (!regexCpfCnpj.test(cpfCnpj)) {
+        alert('Por favor, insira um CPF ou CNPJ válido.');
+        return false;
+    }
+
+    // Validação de CEP
+    const regexCep = /^\d{5}-\d{3}$/;
+    if (!regexCep.test(cep)) {
+        alert('Por favor, insira um CEP válido no formato 00000-000.');
+        return false;
+    }
+
+    // Validação de telefone
+    const regexTelefone = /^\(\d{2}\)\s?\d{4,5}-\d{4}$/;
+    if (!regexTelefone.test(telefone)) {
+        alert('Por favor, insira um telefone válido no formato (00) 0000-0000 ou (00) 90000-0000.');
+        return false;
+    }
+
+    return true

@@ -57,7 +57,7 @@ def confirmar_boleto(request):
             return redirect('gerar_boleto_view')  # Redireciona se não houver dados
 
         # Faz a requisição à API para gerar o documento
-        response = requests.post('http://localhost:8000/pagamentos/api/gerar-boleto/', json=dados)
+        response = requests.post('http://localhost:8000/api/gerar-boleto/', json=dados)
 
         if response.status_code == 200:
             # Obtém a URL do arquivo gerado
